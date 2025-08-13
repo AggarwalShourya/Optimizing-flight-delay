@@ -1,77 +1,49 @@
-✈️ Optimizing Air Travel – Flight Delay Analysis & Prediction
-📌 Project Overview
-This project focuses on analyzing, predicting, and understanding flight delays using historical airline data.
-We perform extensive Exploratory Data Analysis (EDA), feature engineering, and apply Machine Learning models to classify and predict delays.
+# Optimizing Air Travel – Flight Delay Analysis & Prediction
 
-The dataset includes delay causes, airline details, airports, and time-related features.
-The aim is to uncover patterns, priority delay causes, and predictive insights for operational improvements.
+## 📌 Project Overview
+This project analyzes and predicts **flight delays** using historical airline operational data.  
+It combines **Exploratory Data Analysis (EDA)**, **feature engineering**, and **machine learning models** to:
+- Identify patterns in delays
+- Understand the main causes
+- Predict whether a flight will be delayed
+- Estimate delay duration
 
-📂 Data Sources
-Airline_Delay_Cause.csv – Flight delay records and causes
+The project also introduces a **custom Operational Adjustability Index (OAI)** to prioritize **controllable delays** for airlines and airports.
 
-Download_Column_Definitions.xlsx – Column descriptions
+---
 
-🔍 Key Analyses & Findings
-1. Exploratory Data Analysis
-Delta Airlines @ ATL – Highest delay counts for a single month.
+## 📂 Data Sources
+- **Airline_Delay_Cause.csv** – Flight delay records and causes
+- **Download_Column_Definitions.xlsx** – Column descriptions
 
-DFW Airport –
+---
 
-Highest weather-related delays in a single month.
+## 🔍 Key Analyses & Findings
 
-Highest security-related delays (indicating strict protocols).
+### Exploratory Data Analysis (EDA)
+- **Delta Airlines @ ATL** had the highest delay counts for a single month
+- **DFW Airport** recorded:
+  - Highest weather-related delays in a month
+  - Highest security-related delays (possibly due to stricter protocols)
+- **Seasonality:** Minimal; weather-related delays consistent across months
 
-Seasonality Impact – Minimal; weather-related delays consistent across months.
+**Visuals Produced:**
+- Top 20 airports by weather, carrier, and security delays
+- Delay trends across months
+- Delay counts per airline and airport
 
-Visuals Generated:
+---
 
-Top 20 airports by weather, carrier, and security delays
+## 🛠 Preprocessing Steps
 
-Delay trends over months
+### 1. **Missing Values**
+- ~300–500 NaN values (~0.3% of data)  
+- Dropped rows with NaNs due to small percentage
 
-Airport & airline delay distributions
-
-2. Feature Engineering
-Custom features were added to improve prediction:
-
-Carrier-Airport Delay Score – Avg. carrier-caused delay per airport.
-
-Weather-Month Score – Avg. weather delays per month.
-
-Security-Airport Score – Avg. security delays per airport.
-
-Delay Rate – arr_del15 / arr_flights (threshold: 0.2 for classification).
-
-Operational Adjustability Index (OAI) – Weighted score focusing on controllable delays:
-
-OAI
-=
-2.0
-×
-Carrier Delay
-+
-2.0
-×
-Late Aircraft Delay
-+
-1.5
-×
-NAS Delay
-+
-1.0
-×
-Weather Delay
-+
-0.5
-×
-Security Delay
-OAI=2.0×Carrier Delay+2.0×Late Aircraft Delay+1.5×NAS Delay+1.0×Weather Delay+0.5×Security Delay
-3. Machine Learning Models
-Classification (Delay Prediction)
-Target: is_delayed (1 if delay rate > 0.2, else 0)
-
-Models Used:
-
-Random Forest Classifier
-
-XGBoost Classifier (Best performer)
+### 2. **Feature Engineering**
+- **Carrier-Airport Delay Score:** Mean carrier-caused delays per airport
+- **Weather-Month Score:** Mean weather delays per month
+- **Security-Airport Score:** Mean security delays per airport
+- **Delay Rate:** `arr_del15 / arr_flights`  
+  - Threshold **0.2** chosen (from histogram distribution) for binary classification target `is_delayed`
+- **Operational Adjustability Index (OAI):**
