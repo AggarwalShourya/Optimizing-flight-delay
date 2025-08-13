@@ -47,10 +47,6 @@ The project also introduces a **custom Operational Adjustability Index (OAI)** t
 - **Delay Rate:** `arr_del15 / arr_flights`  
   - Threshold **0.2** chosen (from histogram distribution) for binary classification target `is_delayed`
 - **Operational Adjustability Index (OAI):**
-    OAI = 2.0 × Carrier Delay
-    + 2.0 × Late Aircraft Delay
-    + 1.5 × NAS Delay
-    + 1.0 × Weather Delay
-    + 0.5 × Security Delay
+    OAI = 2.0 × Carrier Delay +2.0 × Late Aircraft Delay +1.5 × NAS Delay +1.0 × Weather Delay +0.5 × Security Delay
 
 
