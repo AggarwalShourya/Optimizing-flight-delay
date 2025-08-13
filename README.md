@@ -50,3 +50,66 @@ The project also introduces a **custom Operational Adjustability Index (OAI)** t
     OAI = 2.0 × Carrier Delay +2.0 × Late Aircraft Delay +1.5 × NAS Delay +1.0 × Weather Delay +0.5 × Security Delay
 
 
+- **Label Encoding** for categorical variables:
+  - `carrier_name` → `carrier_label`
+  - `airport` → `airport_label`
+
+### 3. **Target Variables**
+- **Classification:** `is_delayed` (binary: 0 or 1)
+- **Regression:** Average arrival delay (`avg_arr_delay`) for delayed flights
+
+---
+
+## 📊 Modelling Approach
+
+### Classification Models
+- **Random Forest Classifier** – Baseline model
+- **XGBoost Classifier** – Tuned and achieved best performance
+
+**Handling Class Imbalance:**
+- Used `scale_pos_weight = (negative / positive)` in XGBoost
+
+**Performance Metrics:**
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-----------|--------|----------|
+| **Random Forest** | **0.84** | **0.70** | **0.78** | **0.74** |
+| **XGBoost** | **0.85** | **0.72** | **0.80** | **0.76** |
+
+---
+
+### Regression Models
+- **Random Forest Regressor** – Baseline
+- **XGBoost Regressor** – Lower MAE and better generalization
+
+**Best Regression Results (XGBoost):**
+- Mean Absolute Error (MAE): **4.52 minutes**
+
+---
+
+### OAI Prediction
+- **Model:** Random Forest Regressor
+- **Performance:**
+  - MAE: **333.5 minutes**
+  - R² Score: **0.996**
+- **Goal:** Identify controllable delay factors for operational planning
+
+---
+
+## 📦 Libraries Used
+- **Data Processing:** pandas, numpy
+- **Visualization:** matplotlib, seaborn
+- **Machine Learning:** scikit-learn, xgboost
+- **Model Explainability:** SHAP (Kernel crash during OAI evaluation)
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/flight-delay-analysis.git
+cd flight-delay-analysis
+
+
+
