@@ -37,7 +37,7 @@ The project also introduces a **custom Operational Adjustability Index (OAI)** t
 ## 🛠 Preprocessing Steps
 
 ### 1. **Missing Values**
-- ~300–500 NaN values (~0.3% of data)  
+- ~200–300 NaN values (~0.3% of data)  
 - Dropped rows with NaNs due to small percentage
 
 ### 2. **Feature Engineering**
@@ -108,8 +108,8 @@ The project also introduces a **custom Operational Adjustability Index (OAI)** t
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/flight-delay-analysis.git
-cd flight-delay-analysis
+git clone https://github.com/AggarwalShourya/Optimizing-flight-delay.git
+cd Optimizing-flight-delay
 
 
 
